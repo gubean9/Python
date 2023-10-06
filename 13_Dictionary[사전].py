@@ -88,28 +88,28 @@
 # # 데이터의 빈도를 체크하는데 응용
 #################################
 # # 아래 노래 가사에서 각 단어별 사용 횟수 구하기
-song = '''
-Like an apple is my face
-(사과 같은 내 얼굴)
-How I look so beautiful
-(예쁘기도 하구나)
-Eyes are shiny nose is shiny
-(눈도 반짝 코도 반짝)
-And my lips are shiny
-(입도 반짝 반짝 )
-''' 
+# song = '''
+# Like an apple is my face
+# (사과 같은 내 얼굴)
+# How I look so beautiful
+# (예쁘기도 하구나)
+# Eyes are shiny nose is shiny
+# (눈도 반짝 코도 반짝)
+# And my lips are shiny
+# (입도 반짝 반짝 )
+# ''' 
 
-# # 빈 사전 만들기
-dicword = dict()
-for c in song: # 노래 가사에서 글귀를 하나씩 추출
-    if c.isalpha() == False : # 문자로 사용할 수 있는 단어인지 체크(영자, 숫자, 한글) (공백, 특수문자 제외)
-        continue
-    c = c.lower() # 추출한 문자를 소문자로 변경
-    if c not in dicword : # in, not in은 사전의 키 값의 존재여부를 확인
-                          # 추출한 글귀로 구성된 사전의 키가 있는지 확인
-        dicword[c] = 1 # 사전에 포함되어 있지 않은 글귀라면 1을 부여, 신규 생성
-    else : # 사전에 포함된 글귀라면
-        dicword[c] += 1 # 1을 더해줌으로 추가로 찾은 횟수를 증가
+# # # 빈 사전 만들기
+# dicword = dict()
+# for c in song: # 노래 가사에서 글귀를 하나씩 추출
+#     if c.isalpha() == False : # 문자로 사용할 수 있는 단어인지 체크(영자, 숫자, 한글) (공백, 특수문자 제외)
+#         continue
+#     c = c.lower() # 추출한 문자를 소문자로 변경
+#     if c not in dicword : # in, not in은 사전의 키 값의 존재여부를 확인
+#                           # 추출한 글귀로 구성된 사전의 키가 있는지 확인
+#         dicword[c] = 1 # 사전에 포함되어 있지 않은 글귀라면 1을 부여, 신규 생성
+#     else : # 사전에 포함된 글귀라면
+#         dicword[c] += 1 # 1을 더해줌으로 추가로 찾은 횟수를 증가
 # print(dicword)
 
 # # # 사전으로 등록해 둔 데이터를 순차적으로 정렬해서 표현하는 방법
@@ -125,6 +125,64 @@ for c in song: # 노래 가사에서 글귀를 하나씩 추출
 # # ord("z") + 1 : a~z까지 표현하기 위해 range 범위를 줄 때 마지막 단어 코드 정수값 +1을 해줘야 포함된다
 # # chr(codvalue) : 코드 값(정수)를 문자로 변형
 
-for codvalue in range(ord("a"), ord("z") + 1):
-    word = chr(codvalue) # 아스키 코드 값을 문자로 변형 후 word 변수에 할당
-    print(word, " => ", dicword.get(word,0))
+# for codvalue in range(ord("a"), ord("z") + 1):
+#     word = chr(codvalue) # 아스키 코드 값을 문자로 변형 후 word 변수에 할당
+#     print(word, " => ", dicword.get(word,0))
+
+
+
+
+
+
+
+################################
+# # 집합 set()
+# # 여러가지 값의 모임
+# # 중복값 및 2개 이상의 데이터 그룹을 비교할 때 효과적
+# # {}로 표현, 사전처럼 ( : "value" )가 포함되지 않는다
+#####################################################
+# asia = {"korea", "china", "japan", "korea"}
+# print(asia)
+
+
+# # 다른 자료형을 집합으로 변환
+# # N개의 비교군을 자료형으로 전달받고 비교를 수행할 때 집합으로 변형 후 사용 가능
+# print(set("Python"))
+# print(set([22,334,53,23])) # 리스트 => 집합
+# print(set(("김범수", "나얼", "박효신", "이수"))) # 튜플 => 집합
+# print(set({"a" : "에이"}, {"b": "비"})) # 사전 => 집합 (* 키의 데이터만 집합으로 변환된다)
+
+# # 집합의 생성과 데이터 등록
+# test_set = set() # 초기화(메모리에 등록 되었을 때)
+# test_set = {"나비", "매미"}
+# print(test_set)
+
+
+# # 집합의 추가, 삭제
+# Set = {"나비", "매미"}
+# Set.add("풍뎅이")
+# print(Set)
+# Set.remove("나비")
+# print(Set)
+
+
+
+# # 집합의 종류와 연산처리 별 두 개
+# set1 = {1,2,3,4,5,6,7}
+# set2 = {3,5,7,9,10}
+
+# print("교집합", set1 & set2) # 중복되는 값 표현
+# print("합집합", set1 | set2) # 모든 데이터를 표현하지만 중복되는 데이터는 1건만 출력
+# print("차집합", set1 - set2) # 왼쪽 집합에만 있는 원소만 표현
+# print("배타적 집합", set1 ^ set2) # 중복되는 원소는 제거하고 모두 표현
+
+
+# # 부분 집합과 포함 집합
+# mamal = {"곰", "사자", "고릴라", "사람", "침팬치"}
+# primate = {"사람", "고릴라"}
+
+# print(primate <= mamal) # mamal이 primate를 포함하고 있는지를 확인
+# print(primate < mamal) # mamal이 primate를 포함하는데 나머지 원소를 더 갖고 있는지 확인
+# print(mamal <= primate)
+# print(primate <= primate) # primate가 primate를 포함하므로 True
+# print(primate < primate) # primate가 primate를 포함하지만 다른 여분의 원소가 없으므로 False
