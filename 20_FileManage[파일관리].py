@@ -1,13 +1,13 @@
-################3
+###########################################
 # # 파일을 다루는데 사용되는 모듈 shutil. os
 # # 파일을 이동, 복사
-###########################
+###########################################
 # # 파일 복사의 예제
 # import shutil
 
 # shutil.copy("word.txt", "word2.txt")
 
-################
+##################################################################
 # # 절대 경로 : 루트부터 파일의 이름까지를 나타낸 경로(C:\User\a.exe)
 # # 상대 경로 : 특정 파일의 이름만 나타낸 것(a.exe)
 
@@ -35,7 +35,7 @@
 
 
 
-##################33
+#########################
 # # 파일 검색 및 출력하기
 # # 1. 폴더 내의 항목 검색
 # import os
@@ -45,19 +45,56 @@
 
 
 # # 2. 함수의 재귀 호출을 통해 폴더에 존재하는(n개의 폴더 포함) 모든 mp3 파일 찾기
+# import os
+
+# # 폴더를 검색하는 함수
+# def searchDir(dirpath):
+#     # 해당 폴더에 있는 모든 파일의 리스트 작성
+#     filelist = os.listdir(dirpath)
+#     for file in filelist:
+#         fullpath = os.path.join(dirpath, file) # C:\Python\MP3\2022
+#         if os.path.isdir(fullpath) : # fillpath
+#             print("[" + fullpath, "]")
+#             searchDir(fullpath) # 재귀함수 호출 : 더 이상 폴더가 없을때까지
+#         else: # 절대 경로가 폴더 유형이 아닐 경우
+#             print("\t" + fullpath) # C:\Python\MP3\2022\a.mp3
+
+# # 검색하기 위한 폴더 명칭을 인수로 전달
+# searchDir(r"C:\Python\MP3")
+
+
+
+##################################################################################
+# # 실습
+# # 위의 예제를 이용하여 메인 폴더의 항목은 들여쓰기가 되지 않은 상태로 출력되도록 수정
+##################################################################################
 import os
 
-# 폴더를 검색하는 함수
 def searchDir(dirpath):
-    # 해당 폴더에 있는 모든 파일의 리스트 작성
     filelist = os.listdir(dirpath)
     for file in filelist:
-        fullpath = os.path.join(dirpath, file) # C:\Python\MP3\2022
-        if os.path.isdir(fullpath) : # fillpath
+        fullpath = os.path.join(dirpath, file)
+        if os.path.isdir(fullpath) :
             print("[" + fullpath, "]")
-            searchDir(fullpath) # 재귀함수 호출 : 더 이상 폴더가 없을때까지
-        else: # 절대 경로가 폴더 유형이 아닐 경우
-            print("\t" + fullpath) # C:\Python\MP3\2022\a.mp3
+            searchDir(fullpath)
+        # elif os.path.isdir()
+        else:
+            print("\t" + fullpath)
 
-# 검색하기 위한 폴더 명칭을 인수로 전달
 searchDir(r"C:\Python\MP3")
+
+
+
+
+
+
+
+
+
+
+##########################
+# # 추후 받은 코드 추가하기
+##########################
+
+
+
